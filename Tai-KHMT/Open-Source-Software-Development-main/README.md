@@ -66,6 +66,19 @@ Hệ thống quản lý Homestay được phát triển bằng PHP và sử dụ
 
 ### 3.2. Cài đặt
 
+### 🖥️ Giao diện
+- **Trang đăng nhập**  
+  <img src="https://github.com/Duongx66/Nhom4/blob/main/docs/logo/%E1%BA%A3nh2.jpg" alt="Trang đăng nhập" width="400"/>
+
+- **Trang học viên**  
+  <img src="https://github.com/Duongx66/Nhom4/blob/main/docs/logo/%E1%BA%A3nh3.jpg" alt="Trang học viên" width="400"/>
+
+- **Trang giảng viên**  
+  <img src="https://github.com/Duongx66/Nhom4/blob/main/docs/logo/%E1%BA%A3nh4.jpg" alt="Trang giảng viên" width="400"/>
+
+- **Trang quản trị viên**  
+  <img src="https://github.com/Duongx66/Nhom4/blob/main/docs/logo/%E1%BA%A3nh4.jpg" alt="Trang quản trị viên" width="400"/>
+
 #### 3.2.1. Tải project
 ```bash
 https://github.com/Dragonkin1402/Nhom2-QLHomestay.git
