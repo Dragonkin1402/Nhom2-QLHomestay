@@ -68,7 +68,7 @@ Hệ thống quản lý Homestay được phát triển bằng PHP và sử dụ
 
 ### 🖥️ Giao diện
 - **Trang đăng nhập**  
-  <img src="["](https://github.com/Dragonkin1402/Nhom2-QLHomestay/blob/main/Tai-KHMT/Open-Source-Software-Development-main/z6979068114636_2e3f00a8d9708abe4c410d2b92c45836.jpg?raw=true) alt="Trang đăng nhập" width="400"/>
+  <img src="https://github.com/Dragonkin1402/Nhom2-QLHomestay/blob/main/Tai-KHMT/Open-Source-Software-Development-main/z6979068114636_2e3f00a8d9708abe4c410d2b92c45836.jpg?raw=true" alt="Trang đăng nhập" width="400"/>
 
 - **Trang học viên**  
   <img src="https://github.com/Duongx66/Nhom4/blob/main/docs/logo/%E1%BA%A3nh3.jpg" alt="Trang học viên" width="400"/>
