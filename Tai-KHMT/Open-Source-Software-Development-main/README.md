@@ -70,15 +70,16 @@ Hệ thống quản lý Homestay được phát triển bằng PHP và sử dụ
 - **Trang đăng nhập**  
   <img src="https://github.com/Dragonkin1402/Nhom2-QLHomestay/blob/main/Tai-KHMT/Open-Source-Software-Development-main/z6979068367488_063003f2d39c9fa31133a17a6cad637e.jpg?raw=true" alt="Trang đăng nhập" width="400"/>
 
-- **Trang học viên**  
-  <img src="https://github.com/Duongx66/Nhom4/blob/main/docs/logo/%E1%BA%A3nh3.jpg" alt="Trang học viên" width="400"/>
+- **Trang Đặt Phòng**  
+  <img src="https://github.com/Dragonkin1402/Nhom2-QLHomestay/blob/main/Tai-KHMT/Open-Source-Software-Development-main/z6979068114636_2e3f00a8d9708abe4c410d2b92c45836.jpg?raw=true" alt="Trang đặt phòng" width="400"/>
 
-- **Trang giảng viên**  
-  <img src="https://github.com/Duongx66/Nhom4/blob/main/docs/logo/%E1%BA%A3nh4.jpg" alt="Trang giảng viên" width="400"/>
+- **Trang Đặt Phòng**  
+  <img src="https://github.com/Dragonkin1402/Nhom2-QLHomestay/blob/main/Tai-KHMT/Open-Source-Software-Development-main/z6979068124517_0dc60c156e9375c5fe18af8ed1141506.jpg?raw=true" alt="Trang giảng" width="400"/>
 
-- **Trang quản trị viên**  
-  <img src="https://github.com/Duongx66/Nhom4/blob/main/docs/logo/%E1%BA%A3nh4.jpg" alt="Trang quản trị viên" width="400"/>
-
+- **Trang Thanh Toán**  
+  <img src="https://github.com/Dragonkin1402/Nhom2-QLHomestay/blob/main/Tai-KHMT/Open-Source-Software-Development-main/z6979068124812_cd7b62cfbb75865c033d3e6c18bd7d9e.jpg?raw=true" alt="Trang quản trị viên" width="400"/>
+- ** Trang Booking**
+  <img src="https://github.com/Dragonkin1402/Nhom2-QLHomestay/blob/main/Tai-KHMT/Open-Source-Software-Development-main/z6979068131063_0c3ae47088fa28d4054deb0c5fd34da9.jpg?raw=true" alt="Trang quản trị viên" width="400"/>
 #### 3.2.1. Tải project
 ```bash
 https://github.com/Dragonkin1402/Nhom2-QLHomestay.git
