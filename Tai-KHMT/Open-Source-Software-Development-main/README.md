@@ -68,7 +68,7 @@ Hệ thống quản lý Homestay được phát triển bằng PHP và sử dụ
 
 ### 🖥️ Giao diện
 - **Trang đăng nhập**  
-  <img src="https://github.com/Duongx66/Nhom4/blob/main/docs/logo/%E1%BA%A3nh2.jpg" alt="Trang đăng nhập" width="400"/>
+  <img src="" alt="Trang đăng nhập" width="400"/>
 
 - **Trang học viên**  
   <img src="https://github.com/Duongx66/Nhom4/blob/main/docs/logo/%E1%BA%A3nh3.jpg" alt="Trang học viên" width="400"/>
