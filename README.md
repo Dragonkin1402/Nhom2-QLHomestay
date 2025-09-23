@@ -1,11 +1,10 @@
-
 <h2 align="center">
     <a href="https://dainam.edu.vn/vi/khoa-cong-nghe-thong-tin">
     🎓 Faculty of Information Technology (DaiNam University)
     </a>
 </h2>
 <h2 align="center">
-    HOTEL MANAGEMENT SYSTEM
+    Open Source Software Development
 </h2>
 <div align="center">
     <p align="center">
