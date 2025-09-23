@@ -73,7 +73,7 @@
 - **Trang Thanh Toán**  
   <img src="https://github.com/Dragonkin1402/Nhom2-QLHomestay/blob/main/Tai-KHMT/Open-Source-Software-Development-main/z6979068124812_cd7b62cfbb75865c033d3e6c18bd7d9e.jpg?raw=true" alt="Trang Thanh Toán" width="400"/>
   
-- **Trang Booking**
+- **Trang Booking**  
   <img src="https://github.com/Dragonkin1402/Nhom2-QLHomestay/blob/main/Tai-KHMT/Open-Source-Software-Development-main/z6979068131063_0c3ae47088fa28d4054deb0c5fd34da9.jpg?raw=true" alt="Trang Booking" width="400"/>
 ### 3.1. Yêu cầu hệ thống
 
