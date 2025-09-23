@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../functions/room_functions.php';
 
-// Kiểm tra action được truyền qua URL hoặc POST
+// Kiểm tra action
 $action = '';
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
@@ -44,7 +44,7 @@ function handleCreateRoom() {
         exit();
     }
     
-    if (!isset($_POST['name']) || !isset($_POST['type']) || !isset($_POST['price']) || !isset($_POST['status'])) {
+    if (!isset($_POST['name'], $_POST['type'], $_POST['price'], $_POST['status'], $_POST['description'])) {
         header("Location: ../views/room/create_room.php?error=Thiếu thông tin cần thiết");
         exit();
     }
@@ -53,8 +53,9 @@ function handleCreateRoom() {
     $type = trim($_POST['type']);
     $price = trim($_POST['price']);
     $status = trim($_POST['status']);
+    $description = trim($_POST['description']);
     
-    // Validate dữ liệu
+    // Validate
     if (empty($name) || empty($type) || empty($price) || empty($status)) {
         header("Location: ../views/room/create_room.php?error=Vui lòng điền đầy đủ thông tin");
         exit();
@@ -64,9 +65,8 @@ function handleCreateRoom() {
         header("Location: ../views/room/create_room.php?error=Giá phòng không hợp lệ");
         exit();
     }
-    
-    // Gọi hàm thêm phòng
-    $result = addRoom($name, $type, $price, $status);
+
+    $result = addRoom($name, $type, $price, $status, $description);
     
     if ($result) {
         header("Location: ../views/room.php?success=Thêm phòng thành công");
@@ -85,35 +85,35 @@ function handleEditRoom() {
         exit();
     }
     
-    if (!isset($_POST['id']) || !isset($_POST['name']) || !isset($_POST['type']) || !isset($_POST['price']) || !isset($_POST['status'])) {
+    if (!isset($_POST['id'], $_POST['name'], $_POST['type'], $_POST['price'], $_POST['status'], $_POST['description'])) {
         header("Location: ../views/room.php?error=Thiếu thông tin cần thiết");
         exit();
     }
     
-    $id = $_POST['id'];
+    $id = (int)$_POST['id'];
     $name = trim($_POST['name']);
     $type = trim($_POST['type']);
     $price = trim($_POST['price']);
     $status = trim($_POST['status']);
+    $description = trim($_POST['description']);
     
-    // Validate dữ liệu
+    // Validate
     if (empty($name) || empty($type) || empty($price) || empty($status)) {
-        header("Location: ../views/room/edit_room.php?id=" . $id . "&error=Vui lòng điền đầy đủ thông tin");
+        header("Location: ../views/room/edit_room.php?id=$id&error=Vui lòng điền đầy đủ thông tin");
         exit();
     }
 
     if (!is_numeric($price) || $price <= 0) {
-        header("Location: ../views/room/edit_room.php?id=" . $id . "&error=Giá phòng không hợp lệ");
+        header("Location: ../views/room/edit_room.php?id=$id&error=Giá phòng không hợp lệ");
         exit();
     }
     
-    // Gọi function để cập nhật phòng
-    $result = updateRoom($id, $name, $type, $price, $status);
+    $result = updateRoom($id, $name, $type, $price, $status, $description);
     
     if ($result) {
         header("Location: ../views/room.php?success=Cập nhật phòng thành công");
     } else {
-        header("Location: ../views/room/edit_room.php?id=" . $id . "&error=Cập nhật phòng thất bại");
+        header("Location: ../views/room/edit_room.php?id=$id&error=Cập nhật phòng thất bại");
     }
     exit();
 }
@@ -132,15 +132,13 @@ function handleDeleteRoom() {
         exit();
     }
     
-    $id = $_GET['id'];
+    $id = (int)$_GET['id'];
     
-    // Validate ID là số
-    if (!is_numeric($id)) {
+    if ($id <= 0) {
         header("Location: ../views/room.php?error=ID phòng không hợp lệ");
         exit();
     }
     
-    // Gọi function để xóa phòng
     $result = deleteRoom($id);
     
     if ($result) {

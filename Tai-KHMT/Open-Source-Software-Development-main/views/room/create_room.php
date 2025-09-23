@@ -4,7 +4,7 @@ checkLogin(__DIR__ . '/../../index.php');
 ?>
 <!DOCTYPE html>
 <html>
-
+<link rel="stylesheet" href="/form.css">
 <head>
     <title>Homestay - Thêm phòng mới</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -53,7 +53,10 @@ checkLogin(__DIR__ . '/../../index.php');
                         <label for="price" class="form-label">Giá (VND)</label>
                         <input type="number" class="form-control" id="price" name="price" required>
                     </div>
-                    
+                      <div class="mb-3">
+                    <label for="description" class="form-label">Thông tin phòng</label>
+                    <textarea name="description" id="description" class="form-control" rows="3" placeholder="Ví dụ: Có nóng lạnh, 2 giường, điều hòa, ban công"></textarea>
+                </div>
                     <div class="mb-3">
                         <label for="status" class="form-label">Trạng thái</label>
                         <select class="form-control" id="status" name="status" required>

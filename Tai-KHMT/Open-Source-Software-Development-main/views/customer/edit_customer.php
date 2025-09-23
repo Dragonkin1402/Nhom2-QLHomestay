@@ -28,7 +28,7 @@ checkLogin(__DIR__ .'/../../index.php');
         $customer = handleGetCustomerById($id);
 
         if (!$customer) {
-            header("Location: ../customers.php?error=Không tìm thấy khách hàng");
+            header("Location: ../customer.php?error=Không tìm thấy khách hàng");
             exit;
         }
         
@@ -82,7 +82,7 @@ checkLogin(__DIR__ .'/../../index.php');
                         
 
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <a href="../customers.php" class="btn btn-secondary me-md-2">Hủy</a>
+                                <a href="../customer.php" class="btn btn-secondary me-md-2">Hủy</a>
                                 <button type="submit" class="btn btn-primary">Cập nhật</button>
                             </div>
                         </form>

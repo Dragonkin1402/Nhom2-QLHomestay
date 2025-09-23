@@ -49,9 +49,7 @@ checkLogin(__DIR__ . '/../index.php');
                     <h3 class="fw-bold text-primary m-0">
                         <i class="bi bi-people-fill"></i> Danh sách khách hàng
                     </h3>
-                    <a href="customer/create_customer.php" class="btn btn-success">
-                        <i class="bi bi-plus-circle"></i> Thêm khách hàng
-                    </a>
+                    
                 </div>
 
              

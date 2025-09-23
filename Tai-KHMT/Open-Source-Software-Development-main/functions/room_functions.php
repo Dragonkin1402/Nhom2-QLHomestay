@@ -8,7 +8,7 @@ require_once 'db_connection.php';
 function getAllRooms() {
     $conn = getDbConnection();
 
-    $sql = "SELECT id, name, type, price, status FROM rooms ORDER BY id";
+    $sql = "SELECT id, name, type, price, status, description FROM rooms ORDER BY id";
     $result = mysqli_query($conn, $sql);
 
     $rooms = [];
@@ -24,20 +24,15 @@ function getAllRooms() {
 
 /**
  * Thêm phòng mới
- * @param string $name Tên phòng
- * @param string $type Loại phòng
- * @param float $price Giá phòng
- * @param string $status Tình trạng (available, booked, maintenance...)
- * @return bool True nếu thành công, False nếu thất bại
  */
-function addRoom($name, $type, $price, $status) {
+function addRoom($name, $type, $price, $status, $description) {
     $conn = getDbConnection();
 
-    $sql = "INSERT INTO rooms (name, type, price, status) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO rooms (name, type, price, status, description) VALUES (?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
 
     if ($stmt) {
-        mysqli_stmt_bind_param($stmt, "ssds", $name, $type, $price, $status);
+        mysqli_stmt_bind_param($stmt, "ssdss", $name, $type, $price, $status, $description);
         $success = mysqli_stmt_execute($stmt);
 
         mysqli_stmt_close($stmt);
@@ -51,13 +46,11 @@ function addRoom($name, $type, $price, $status) {
 
 /**
  * Lấy thông tin phòng theo ID
- * @param int $id ID phòng
- * @return array|null Thông tin phòng hoặc null nếu không tìm thấy
  */
 function getRoomById($id) {
     $conn = getDbConnection();
 
-    $sql = "SELECT id, name, type, price, status FROM rooms WHERE id = ? LIMIT 1";
+    $sql = "SELECT id, name, type, price, status, description FROM rooms WHERE id = ? LIMIT 1";
     $stmt = mysqli_prepare($conn, $sql);
 
     if ($stmt) {
@@ -81,21 +74,15 @@ function getRoomById($id) {
 
 /**
  * Cập nhật thông tin phòng
- * @param int $id ID phòng
- * @param string $name Tên phòng
- * @param string $type Loại phòng
- * @param float $price Giá phòng
- * @param string $status Tình trạng
- * @return bool True nếu thành công, False nếu thất bại
  */
-function updateRoom($id, $name, $type, $price, $status) {
+function updateRoom($id, $name, $type, $price, $status, $description) {
     $conn = getDbConnection();
 
-    $sql = "UPDATE rooms SET name = ?, type = ?, price = ?, status = ? WHERE id = ?";
+    $sql = "UPDATE rooms SET name = ?, type = ?, price = ?, status = ?, description = ? WHERE id = ?";
     $stmt = mysqli_prepare($conn, $sql);
 
     if ($stmt) {
-        mysqli_stmt_bind_param($stmt, "ssdsi", $name, $type, $price, $status, $id);
+        mysqli_stmt_bind_param($stmt, "ssdssi", $name, $type, $price, $status, $description, $id);
         $success = mysqli_stmt_execute($stmt);
 
         mysqli_stmt_close($stmt);
@@ -109,8 +96,6 @@ function updateRoom($id, $name, $type, $price, $status) {
 
 /**
  * Xóa phòng theo ID
- * @param int $id ID phòng
- * @return bool True nếu thành công, False nếu thất bại
  */
 function deleteRoom($id) {
     $conn = getDbConnection();
@@ -130,23 +115,23 @@ function deleteRoom($id) {
     mysqli_close($conn);
     return false;
 }
+
 /**
  * Lấy danh sách phòng cho dropdown
  */
-require_once __DIR__ . '/db_connection.php';
 function getAllRoomsForDropdown() {
-    $conn = getDbConnection();  // ✅ Phải mở kết nối trước khi query
+    $conn = getDbConnection();
 
     $sql = "SELECT id, name FROM rooms ORDER BY name ASC";
     $result = mysqli_query($conn, $sql);
 
-    $customers = [];
+    $rooms = [];
     if ($result && mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            $customers[] = $row;
+            $rooms[] = $row;
         }
     }
-    return $customers;
+    mysqli_close($conn);
+    return $rooms;
 }
-
 ?>

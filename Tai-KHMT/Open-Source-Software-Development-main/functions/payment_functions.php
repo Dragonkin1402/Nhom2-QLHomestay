@@ -2,12 +2,15 @@
 require_once 'db_connection.php';
 
 /**
- * Lấy tất cả payments
+ * Lấy tất cả payments (cho admin)
  */
 function getAllPayments() {
     $conn = getDbConnection();
-    $sql = "SELECT p.id, p.booking_id, p.amount, p.method, p.date
+    $sql = "SELECT p.id, p.booking_id, p.amount, p.method, p.date, u.username
             FROM payments p
+            JOIN bookings b ON p.booking_id = b.id
+            JOIN customers c ON b.customer_id = c.id
+            JOIN users u ON c.user_id = u.id
             ORDER BY p.id DESC";
     $result = mysqli_query($conn, $sql);
 
@@ -16,6 +19,37 @@ function getAllPayments() {
         while ($row = mysqli_fetch_assoc($result)) {
             $payments[] = $row;
         }
+    }
+
+    mysqli_close($conn);
+    return $payments;
+}
+
+/**
+ * Lấy payments theo user_id (cho user thường)
+ */
+function getPaymentsByUser($user_id) {
+    $conn = getDbConnection();
+    $sql = "SELECT p.id, p.booking_id, p.amount, p.method, p.date
+            FROM payments p
+            JOIN bookings b ON p.booking_id = b.id
+            JOIN customers c ON b.customer_id = c.id
+            WHERE c.user_id = ?
+            ORDER BY p.id DESC";
+    $stmt = mysqli_prepare($conn, $sql);
+
+    $payments = [];
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "i", $user_id);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        if ($result && mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $payments[] = $row;
+            }
+        }
+        mysqli_stmt_close($stmt);
     }
 
     mysqli_close($conn);
@@ -57,8 +91,6 @@ function addPayment($booking_id, $amount, $method, $date) {
     mysqli_close($conn);
     return false;
 }
-
-
 
 /**
  * Lấy payment theo ID
@@ -111,15 +143,15 @@ function updatePayment($id, $booking_id, $amount, $method, $date) {
             ";
             $stmt2 = mysqli_prepare($conn, $updateRoom);
             mysqli_stmt_bind_param($stmt2, "i", $booking_id);
-            mysqli_stmt_execute($stmt2);
+
+            if (!mysqli_stmt_execute($stmt2)) {
+                echo "SQL Error: " . mysqli_error($conn);
+            } else {
+                echo "Update room thành công!";
+            }
+
             mysqli_stmt_close($stmt2);
         }
-        if (!mysqli_stmt_execute($stmt2)) {
-            echo "SQL Error: " . mysqli_error($conn);
-        } else {
-            echo "Update room thành công!";
-        }
-
 
         mysqli_close($conn);
         return $success;
@@ -128,7 +160,6 @@ function updatePayment($id, $booking_id, $amount, $method, $date) {
     mysqli_close($conn);
     return false;
 }
-
 
 /**
  * Xóa payment

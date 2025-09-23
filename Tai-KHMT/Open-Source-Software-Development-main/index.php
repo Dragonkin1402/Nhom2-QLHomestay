@@ -110,6 +110,11 @@ session_start();
                     <?php endif; ?>
 
                     <button type="submit" name="login" class="btn-login">Đăng nhập</button>
+                  <p>Chưa có tài khoản? 
+                    <a href="views/register.php">Đăng ký ngay</a>
+                </p>
+
+
                 </form>
             </div>
         </div>

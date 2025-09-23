@@ -2,6 +2,17 @@
 require_once __DIR__ . '/../functions/auth.php';
 checkLogin(__DIR__ . '/../index.php');
 require_once __DIR__ . '/../functions/payment_functions.php';
+
+// Lấy thông tin user đang đăng nhập
+$role = $_SESSION['role'];
+$user_id = $_SESSION['user_id'];
+
+// Nếu admin => lấy tất cả, nếu user => chỉ lấy payment của mình
+if ($role === 'admin') {
+    $payments = getAllPayments();
+} else {
+    $payments = getPaymentsByUser($user_id); // hàm này bạn thêm trong payment_functions.php
+}
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -15,9 +26,11 @@ require_once __DIR__ . '/../functions/payment_functions.php';
         body {
             background-color: #f4f6f9;
         }
+
         .card {
             border-radius: 15px;
         }
+
         .table thead th {
             position: sticky;
             top: 0;
@@ -25,6 +38,7 @@ require_once __DIR__ . '/../functions/payment_functions.php';
             color: white;
             z-index: 10;
         }
+
         .action-btn {
             width: 36px;
             height: 36px;
@@ -33,6 +47,7 @@ require_once __DIR__ . '/../functions/payment_functions.php';
             justify-content: center;
             border-radius: 50%;
         }
+
         .action-btn i {
             font-size: 1rem;
         }
@@ -50,12 +65,7 @@ require_once __DIR__ . '/../functions/payment_functions.php';
                 <h3 class="fw-bold text-primary m-0">
                     <i class="bi bi-credit-card-2-front-fill"></i> Danh sách thanh toán
                 </h3>
-                <a href="payment/create_payment.php" class="btn btn-success">
-                    <i class="bi bi-plus-circle"></i> Thêm Payment
-                </a>
             </div>
-
-      
 
             <!-- Thông báo -->
             <?php if (isset($_GET['success'])): ?>
@@ -74,42 +84,42 @@ require_once __DIR__ . '/../functions/payment_functions.php';
             <div class="table-responsive" style="max-height: 500px;">
                 <table class="table table-hover align-middle">
                     <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Booking ID</th>
-                            <th>Số tiền</th>
-                            <th>Ngày thanh toán</th>
-                            <th>Phương thức</th>
-                            <th class="text-center">Thao tác</th>
-                        </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Booking ID</th>
+                        <th>Số tiền</th>
+                        <th>Ngày thanh toán</th>
+                        <th>Phương thức</th>
+                        <th class="text-center">Thao tác</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <?php $payments = getAllPayments(); ?>
-                        <?php foreach ($payments as $payment): ?>
-                            <tr>
-                                <td><span class="badge bg-secondary"><?= $payment['id'] ?></span></td>
-                                <td><?= htmlspecialchars($payment['booking_id']) ?></td>
-                                <td><span class="badge bg-info text-dark"><?= number_format($payment['amount']) ?> đ</span></td>
-                                <td><?= htmlspecialchars($payment['date']) ?></td>
-                                <td>
-                                    <?php
-                                    switch ($payment['method']) {
-                                        case 'cash':
-                                            echo '<span class="badge bg-success">Tiền mặt</span>';
-                                            break;
-                                        case 'bank_transfer':
-                                            echo '<span class="badge bg-primary">Chuyển khoản</span>';
-                                            break;
-                                        case 'credit_card':
-                                            echo '<span class="badge bg-warning text-dark">Thẻ tín dụng</span>';
-                                            break;
-                                        default:
-                                            echo '<span class="badge bg-secondary">Online</span>';
-                                            break;
-                                    }
-                                    ?>
-                                </td>
-                                <td class="text-center">
+                    <?php foreach ($payments as $payment): ?>
+                        <tr>
+                            <td><span class="badge bg-secondary"><?= $payment['id'] ?></span></td>
+                            <td><?= htmlspecialchars($payment['booking_id']) ?></td>
+                            <td><span class="badge bg-info text-dark"><?= number_format($payment['amount']) ?> đ</span></td>
+                            <td><?= htmlspecialchars($payment['date']) ?></td>
+                            <td>
+                                <?php
+                                switch ($payment['method']) {
+                                    case 'cash':
+                                        echo '<span class="badge bg-success">Tiền mặt</span>';
+                                        break;
+                                    case 'bank_transfer':
+                                        echo '<span class="badge bg-primary">Chuyển khoản</span>';
+                                        break;
+                                    case 'credit_card':
+                                        echo '<span class="badge bg-warning text-dark">Thẻ tín dụng</span>';
+                                        break;
+                                    default:
+                                        echo '<span class="badge bg-secondary">Khác</span>';
+                                        break;
+                                }
+                                ?>
+                            </td>
+                            <td class="text-center">
+                                <?php if ($role === 'admin'): ?>
                                     <a href="payment/edit_payment.php?id=<?= $payment['id'] ?>"
                                        class="btn btn-sm btn-warning action-btn" title="Sửa">
                                         <i class="bi bi-pencil"></i>
@@ -119,9 +129,12 @@ require_once __DIR__ . '/../functions/payment_functions.php';
                                        class="btn btn-sm btn-danger action-btn" title="Xóa">
                                         <i class="bi bi-trash"></i>
                                     </a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
+                                <?php else: ?>
+                                    <span class="text-muted">---</span>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

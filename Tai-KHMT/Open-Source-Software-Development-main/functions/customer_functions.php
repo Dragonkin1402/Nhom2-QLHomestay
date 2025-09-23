@@ -8,7 +8,7 @@ require_once 'db_connection.php';
 function getAllCustomers() {
     $conn = getDbConnection();
 
-    $sql = "SELECT id, name, email, phone FROM customers ORDER BY id";
+    $sql = "SELECT id, user_id, name, email, phone FROM customers ORDER BY id";
     $result = mysqli_query($conn, $sql);
 
     $customers = [];
@@ -23,20 +23,21 @@ function getAllCustomers() {
 }
 
 /**
- * Thêm khách hàng mới
+ * Thêm khách hàng mới (luôn gắn với user_id)
+ * @param int $userId ID của user
  * @param string $name Tên khách hàng
  * @param string $email Email khách hàng
  * @param string $phone Số điện thoại khách hàng
  * @return bool True nếu thành công, False nếu thất bại
  */
-function addCustomer($name, $email, $phone) {
+function addCustomer($name, $email, $phone, $user_id) {
     $conn = getDbConnection();
 
-    $sql = "INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO customers (name, email, phone, user_id) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
 
     if ($stmt) {
-        mysqli_stmt_bind_param($stmt, "sss", $name, $email, $phone);
+        mysqli_stmt_bind_param($stmt, "sssi", $name, $email, $phone, $user_id);
         $success = mysqli_stmt_execute($stmt);
 
         mysqli_stmt_close($stmt);
@@ -48,6 +49,7 @@ function addCustomer($name, $email, $phone) {
     return false;
 }
 
+
 /**
  * Lấy thông tin một khách hàng theo ID
  * @param int $id ID khách hàng
@@ -56,7 +58,7 @@ function addCustomer($name, $email, $phone) {
 function getCustomerById($id) {
     $conn = getDbConnection();
 
-    $sql = "SELECT id, name, email, phone FROM customers WHERE id = ? LIMIT 1";
+    $sql = "SELECT id, user_id, name, email, phone FROM customers WHERE id = ? LIMIT 1";
     $stmt = mysqli_prepare($conn, $sql);
 
     if ($stmt) {
@@ -80,11 +82,6 @@ function getCustomerById($id) {
 
 /**
  * Cập nhật thông tin khách hàng
- * @param int $id ID khách hàng
- * @param string $name Tên khách hàng mới
- * @param string $email Email mới
- * @param string $phone Số điện thoại mới
- * @return bool True nếu thành công, False nếu thất bại
  */
 function updateCustomer($id, $name, $email, $phone) {
     $conn = getDbConnection();
@@ -107,8 +104,6 @@ function updateCustomer($id, $name, $email, $phone) {
 
 /**
  * Xóa khách hàng theo ID
- * @param int $id ID khách hàng cần xóa
- * @return bool True nếu thành công, False nếu thất bại
  */
 function deleteCustomer($id) {
     $conn = getDbConnection();
@@ -128,13 +123,12 @@ function deleteCustomer($id) {
     mysqli_close($conn);
     return false;
 }
+
 /**
  * Lấy danh sách khách hàng cho dropdown
  */
-require_once __DIR__ . '/db_connection.php';
-
 function getAllCustomersForDropdown() {
-    $conn = getDbConnection();  // ✅ Phải mở kết nối trước khi query
+    $conn = getDbConnection();  
 
     $sql = "SELECT id, name, email FROM customers ORDER BY name ASC";
     $result = mysqli_query($conn, $sql);
@@ -146,8 +140,7 @@ function getAllCustomersForDropdown() {
         }
     }
 
-    mysqli_close($conn); // đóng kết nối
+    mysqli_close($conn); 
     return $customers;
 }
-
 ?>

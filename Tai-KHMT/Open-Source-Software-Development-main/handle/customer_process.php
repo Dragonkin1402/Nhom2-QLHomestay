@@ -73,7 +73,7 @@ function handleCreateCustomer() {
  */
 function handleEditCustomer() {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        header("Location: ../views/customers.php?error=Phương thức không hợp lệ");
+        header("Location: ../views/customer.php?error=Phương thức không hợp lệ");
         exit();
     }
     
@@ -91,7 +91,7 @@ function handleEditCustomer() {
     $result = updateCustomer($id, $name, $email, $phone);
     
     if ($result) {
-        header("Location: ../views/customers.php?success=Cập nhật khách hàng thành công");
+        header("Location: ../views/customer.php?success=Cập nhật khách hàng thành công");
     } else {
         header("Location: ../views/customer/edit_customer.php?id=$id&error=Cập nhật khách hàng thất bại");
     }

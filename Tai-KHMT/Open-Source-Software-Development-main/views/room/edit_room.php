@@ -84,6 +84,12 @@ checkLogin(__DIR__ . '/../../index.php');
                                     </select>
                                 </div>
 
+                                <!-- Mô tả -->
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Mô tả</label>
+                                    <textarea class="form-control" id="description" name="description" rows="3"><?php echo htmlspecialchars($room['description'] ?? ''); ?></textarea>
+                                </div>
+
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <a href="../room.php" class="btn btn-secondary me-md-2">Hủy</a>
                                     <button type="submit" class="btn btn-primary">Cập nhật</button>

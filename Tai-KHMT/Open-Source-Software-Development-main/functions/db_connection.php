@@ -2,8 +2,8 @@
 
 function getDbConnection() {
     $servername = "localhost";
-    $username = "root";
-    $password = "";
+       $username = "root";
+    $password = "Pht7125@";
     $dbname = "homestay_db";
     $port = 3306;
 

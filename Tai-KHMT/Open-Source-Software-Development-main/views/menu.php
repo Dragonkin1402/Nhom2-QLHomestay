@@ -34,8 +34,6 @@ $currentUser = getCurrentUser();
         }
     </style>
 </head>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg shadow-sm">
@@ -43,7 +41,7 @@ $currentUser = getCurrentUser();
             <!-- Logo -->
             <a class="navbar-brand d-flex align-items-center text-white fw-bold" href="#">
                 <img src="../images/fitdnu_logo.png" alt="FIT-DNU Logo" height="40" class="me-2">
-                FITDNU Homestay
+                DNU Homestay
             </a>
 
             <!-- Toggle button -->
@@ -56,16 +54,24 @@ $currentUser = getCurrentUser();
             <!-- Menu items -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link <?= basename($_SERVER['PHP_SELF'])=='customer.php'?'active':'' ?>" href="customer.php">
-                            <i class="bi bi-people-fill"></i> Khách hàng
-                        </a>
+                    <?php if (($currentUser['role'] ?? '') === 'admin'): ?>
+                           <li class="nav-item">
+                        <a class="nav-link" href="dashboard.php">📊 Thống kê</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= basename($_SERVER['PHP_SELF'])=='room.php'?'active':'' ?>" href="room.php">
-                            <i class="bi bi-house-door-fill"></i> Phòng
-                        </a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?= basename($_SERVER['PHP_SELF'])=='customer.php'?'active':'' ?>" href="customer.php">
+                                <i class="bi bi-people-fill"></i> Khách hàng
+                            </a>
+                      
+                        
+                    <?php endif; ?>
+
+                    <!-- Menu chung cho cả Admin và User -->
+                     <li class="nav-item">
+                            <a class="nav-link <?= basename($_SERVER['PHP_SELF'])=='room.php'?'active':'' ?>" href="room.php">
+                                <i class="bi bi-house-door-fill"></i> Phòng
+                            </a>
+                        </li>
                     <li class="nav-item">
                         <a class="nav-link <?= basename($_SERVER['PHP_SELF'])=='booking.php'?'active':'' ?>" href="booking.php">
                             <i class="bi bi-calendar-check-fill"></i> Booking
@@ -76,24 +82,22 @@ $currentUser = getCurrentUser();
                             <i class="bi bi-credit-card-2-front-fill"></i> Thanh toán
                         </a>
                     </li>
+                      </li>
+                     
+                    
                 </ul>
+                                
+                   
 
-                <!-- User / Logout -->
-<div class="dropdown">
-    <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" 
-       href="#" id="userDropdown" role="button" 
-       data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="../images/aiotlab_logo.png" alt="User" width="36" height="36" class="rounded-circle me-2">
-        <strong><?= htmlspecialchars($currentUser['username'] ?? 'User') ?></strong>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
-        <!-- <li> <a class="dropdown-item" href="#">Thông tin cá nhân</a></li> -->
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item text-danger" href="../handle/logout_process.php">
-            <i class="bi bi-box-arrow-right"></i> Đăng xuất
-        </a></li>
-    </ul>
-</div>
+                <!-- User info + Logout -->
+                <div class="d-flex align-items-center text-white">
+                    <img src="../images/aiotlab_logo.png" alt="User" width="36" height="36" class="rounded-circle me-2">
+                    <strong><?= htmlspecialchars($currentUser['username'] ?? 'User') ?></strong>
+                    <span class="badge bg-light text-dark ms-2"><?= htmlspecialchars($currentUser['role'] ?? '') ?></span>
+                    <a class="btn btn-sm btn-danger ms-3" href="../handle/logout_process.php">
+                        <i class="bi bi-box-arrow-right"></i> Đăng xuất
+                    </a>
+                </div>
 
             </div>
         </div>
