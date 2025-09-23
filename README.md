@@ -21,17 +21,21 @@
 </div>
 
 ## 📖 1. Giới thiệu
-Hệ thống quản lý Homestay được phát triển bằng PHP và sử dụng MySQL làm cơ sở dữ liệu, nhằm hỗ trợ chủ Homestay trong việc quản lý đặt phòng, khách hàng, thanh toán và các dịch vụ đi kèm. Giải pháp này giúp tự động hóa quy trình, giảm thiểu sai sót so với quản lý thủ công, đồng thời cung cấp báo cáo doanh thu – chi phí nhanh chóng và chính xác, góp phần nâng cao hiệu quả vận hành và trải nghiệm khách hàng.
+Đề tài Xây dựng trang web quản lý  Homestay được xây dựng nhằm hỗ trợ chủ homestay trong việc quản lý khách hàng, phòng ở, dịch vụ và doanh thu, thay thế cách làm thủ công bằng một hệ thống hiện đại, tiện lợi và dễ tra cứu. Trong quá trình phát triển, MySQL Workbench được sử dụng để thiết kế và quản lý cơ sở dữ liệu, XAMPP đóng vai trò máy chủ cục bộ cung cấp Apache và MySQL, còn Visual Studio Code là công cụ lập trình chính để xây dựng giao diện và xử lý logic hệ thống. Sự kết hợp của ba công cụ này tạo nên một giải pháp hoàn chỉnh, dễ triển khai và có khả năng áp dụng thực tế trong hoạt động kinh doanh homestay.
 
 ### Tính năng chính:
-- 👥 **Quản lý khách hàng**: Thêm, sửa, xóa thông tin khách hàng
-- 🚪 **Quản lý phòng: Theo dõi trạng thái phòng (trống, đã thuê, bảo trì)
--    **Quản lý thanh toán: Theo dõi trạng thái thanh toán phòng 
-- 📅 **Quản lý đặt phòng**: Tạo, cập nhật và theo dõi các đơn đặt phòng
-- 📊 **Dashboard**: Thống kê tổng quan về tình hình hoạt động
-- 🔍 **Tìm kiếm**: Tìm kiếm nhanh trong tất cả các module 
-- 🌙 **Dark Mode**: Chế độ giao diện tối/sáng
-
+Đối với Quản trị viên
+•	Quản lý tài khoản người dùng (thêm, sửa, xóa, phân quyền).
+•	Quản lý thông tin phòng (thêm, sửa, xóa, cập nhật trạng thái).
+•	Quản lý danh sách khách hàng.
+•	Quản lý đặt phòng (xem, xác nhận, hủy).
+•	Quản lý thanh toán (xem, cập nhật).
+•	Thống kê, báo cáo doanh thu, tình trạng phòng.
+Đối với User
+•	Đăng ký tài khoản, đăng nhập.
+•	Xem thông tin phòng, tình trạng phòng.
+•	Đặt phòng trực tuyến.
+•	Xem lịch sử đặt phòng.
 ## 🔧 2. Các công nghệ được sử dụng
 <div align="center">
 
@@ -68,6 +72,7 @@ Hệ thống quản lý Homestay được phát triển bằng PHP và sử dụ
 
 - **Trang Thanh Toán**  
   <img src="https://github.com/Dragonkin1402/Nhom2-QLHomestay/blob/main/Tai-KHMT/Open-Source-Software-Development-main/z6979068124812_cd7b62cfbb75865c033d3e6c18bd7d9e.jpg?raw=true" alt="Trang Thanh Toán" width="400"/>
+  
 - **Trang Booking**
   <img src="https://github.com/Dragonkin1402/Nhom2-QLHomestay/blob/main/Tai-KHMT/Open-Source-Software-Development-main/z6979068131063_0c3ae47088fa28d4054deb0c5fd34da9.jpg?raw=true" alt="Trang Booking" width="400"/>
 ### 3.1. Yêu cầu hệ thống
