@@ -25,7 +25,7 @@
 
 ### Tính năng chính:
 Đối với Quản trị viên
-•	Quản lý tài khoản người dùng (thêm, sửa, xóa, phân quyền).
+• 	Quản lý tài khoản người dùng (thêm, sửa, xóa, phân quyền).
 •	Quản lý thông tin phòng (thêm, sửa, xóa, cập nhật trạng thái).
 •	Quản lý danh sách khách hàng.
 •	Quản lý đặt phòng (xem, xác nhận, hủy).
@@ -127,30 +127,30 @@ $dbname = "homestay_db";
 
 ```
 BTL/
-├── index.php               
-├── functions/             
-│   ├── auth.php
-│   ├── db_connection.php
-│   ├── room_functions.php
-│   ├── customer_functions.php
-│   ├── payment_functions.php
-│   └── booking_functions.php
-├── handle/                  
-│   ├── login_process.php
-│   ├── logout_process.php
-│   └── room_process.php
-│   └── customer_process.php
-│   └── payment_process.php
-│   └── booking_process.php
-├── views/                  
-│   ├── dashboard.php        
-│   ├── menu.php          
-│   ├── customer.php          
-│   ├── room.php           
-│   ├── payment.php       
-│   ├── booking.php        
-│   
-├── css/                   
-└── images/                
+├── index.php                  # Trang chính khởi chạy ứng dụng
+├── functions/                 # Thư mục chứa các hàm xử lý logic
+│   ├── auth.php               # Xử lý xác thực (login, logout)
+│   ├── db_connection.php      # Kết nối cơ sở dữ liệu
+│   ├── room_functions.php     # Các hàm xử lý phòng
+│   ├── customer_functions.php # Các hàm xử lý khách hàng
+│   ├── payment_functions.php  # Các hàm xử lý thanh toán
+│   └── booking_functions.php  # Các hàm xử lý đặt phòng
+├── handle/                    # Thư mục xử lý request từ người dùng
+│   ├── login_process.php      # Xử lý đăng nhập
+│   ├── logout_process.php     # Xử lý đăng xuất
+│   ├── room_process.php       # Xử lý thêm/sửa/xóa phòng
+│   ├── customer_process.php   # Xử lý thông tin khách hàng
+│   ├── payment_process.php    # Xử lý thanh toán
+│   └── booking_process.php    # Xử lý đặt phòng
+├── views/                     # Thư mục giao diện hiển thị
+│   ├── dashboard.php          # Trang tổng quan Admin
+│   ├── menu.php               # Menu điều hướng
+│   ├── customer.php           # Giao diện quản lý khách hàng
+│   ├── room.php               # Giao diện quản lý phòng
+│   ├── payment.php            # Giao diện quản lý thanh toán
+│   └── booking.php            # Giao diện quản lý đặt phòng
+├── css/                       # Thư mục chứa file CSS (style giao diện)
+└── images/                    # Thư mục chứa hình ảnh
+       
 ```
 
