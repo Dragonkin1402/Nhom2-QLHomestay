@@ -75,7 +75,7 @@ Hệ thống quản lý homestay được phát triển bằng PHP và MySQL. Đ
 
 ## 3. Hình ảnh các chức năng
 ### 3.1. 🔐 Trang Đăng nhập (login.png)
-<img width="1910" height="885" alt="image" src="DangNhap.png" />
+<img width="1910" height="885" alt="image" src="images/DangNhap.png" />
 
  Đăng ký 
  <img width="1910" height="885" alt="image" src="DangKy.png" />
