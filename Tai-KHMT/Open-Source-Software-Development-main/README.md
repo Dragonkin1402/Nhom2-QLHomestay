@@ -87,8 +87,7 @@ Hệ thống quản lý homestay được phát triển bằng PHP và MySQL. Đ
 
 ### 3.3. 🚪 Quản lý Phòng
 - Trang danh sách phòng
-<img width="1910" height="885" alt="image" src="images/DSPhongg.png
-" />
+<img width="1910" height="885" alt="image" src="images/DSPhongg.png" />
 
 
 ### 3.4. 📅 Quản lý Đặt phòng
