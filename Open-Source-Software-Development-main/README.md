@@ -116,7 +116,7 @@ Hệ thống quản lý homestay được phát triển bằng PHP và MySQL. Đ
 
 #### 4.2.1. Tải project
 ```bash
-git clone 
+git clone: https://github.com/Dragonkin1402/Nhom2-QLHomestay 
 
 ```
 
