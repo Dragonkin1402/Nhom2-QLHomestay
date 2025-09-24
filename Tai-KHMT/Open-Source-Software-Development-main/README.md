@@ -78,30 +78,30 @@ Hệ thống quản lý homestay được phát triển bằng PHP và MySQL. Đ
 <img width="1910" height="885" alt="image" src="images/DangNhap.png" />
 
  Đăng ký 
- <img width="1910" height="885" alt="image" src="DangKy.png" />
+ <img width="1910" height="885" alt="image" src="images/DangKy.png" />
 
 ### 3.2. 📊 Dashboard (dashboard.png)  
-<img width="1910" height="885" alt="image" src="dashboard.png" />
+<img width="1910" height="885" alt="image" src="images/dashboard.png" />
 
 
 
 ### 3.3. 🚪 Quản lý Phòng
 - Trang danh sách phòng
-<img width="1910" height="885" alt="image" src="DSPhongg.png
+<img width="1910" height="885" alt="image" src="images/DSPhongg.png
 " />
 
 
 ### 3.4. 📅 Quản lý Đặt phòng
 - Trang danh sách đặt phòng  
-<img width="1910" height="885" alt="image" src="DSBooking.png" />
+<img width="1910" height="885" alt="image" src="images/DSBooking.png" />
 
 3.5. Quản Lý thanh toán 
 
-<img width="1910" height="885" alt="image" src="DSThanhToan.png" />
+<img width="1910" height="885" alt="image" src="images/DSThanhToan.png" />
 
 3.6. Giao diện User
 
-<img width="1910" height="885" alt="image" src="User.png" />
+<img width="1910" height="885" alt="image" src="images/User.png" />
 
 ## ⚙️ 4. Cài đặt và Sử dụng
 
